@@ -1,6 +1,9 @@
 /** @param names array containing inserted names */
 var names = [];
 
+/** @param mustRemove logical value for removing names in the array */
+var mustRemove = false;
+
 var textboxname = document.getElementById("name");
 var selectbutton = document.getElementById("select-button");
 var selectcontainer = document.getElementById("random-name-selection-container");
@@ -67,7 +70,11 @@ function randomInteger(limit) {
 
 /** Returns a random name from list names */
 function randomName() {
-    return names[randomInteger(names.length)];
+    let name = names[randomInteger(names.length)];
+    if(mustRemove) {
+        names = removeElementAt(names.indexOf(name), names);
+    }
+    return name;
 }
 
 /** Show the randomly selected name to the user */
@@ -75,6 +82,9 @@ async function showRandomName() {
     hideElements();
     display.innerHTML = randomName();
     await new Promise(resolve => setTimeout(resolve, 3000));
+    if(listEmpty()) {
+        scrolltoinput();
+    }
     restoreElements();
 }
 
@@ -88,4 +98,49 @@ function restoreElements() {
     display.innerHTML = "";
     selectbutton.style.display = "inline-block";
     selectbutton.focus();
+}
+
+/** Verify if the names list is empty */
+function listEmpty() {
+    return names.length == 0;
+}
+
+/** Control the remove toggle */
+function toggleRemove() {
+    var toggle = document.getElementById("switch-option-1");
+    var switchToggle = document.getElementById("switch-toggle-option-1");
+    if(mustRemove) {
+        toggle.style.backgroundColor = "#929292";
+        switchToggle.style.transform = "translateX(0)";
+    } else {
+        toggle.style.backgroundColor = "transparent";
+        switchToggle.style.transform = "translateX(15px)";
+    }
+    mustRemove = !mustRemove;
+}
+
+/** Control the ckeckbox */
+function checkRemove() {
+    toggleRemove();
+    var check = document.getElementById("option-1");
+    if(mustRemove) {
+        check.checked = "true";
+    }
+    else {
+        check.checked = "false";
+    }
+}
+
+/** Remove a value in the array in a given index and return the new array
+ * @param index index which represents the position of the value that must be removed
+ * @param array array from which data will be removed
+ */
+function removeElementAt(index, array) {
+    var values = [];
+    for(var i = 0; i < array.length; i++) {
+        if(i != index) {
+            values.push(array[i]);
+        }
+    }
+    return values;
 }

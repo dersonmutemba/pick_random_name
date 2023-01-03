@@ -13,6 +13,15 @@
             <span id="display-name"></span>
             <button id="select-button" onclick="showRandomName()">Selecionar Nome</button>
         </div>
+        <div class="messenger-and-options">
+            <div id="options">
+                <input id="option-1" type="checkbox" style="display: none;" onchange="checkRemove()">
+                <div class="switch" id="switch-option-1" onclick="toggleRemove()">
+                    <div class="switch-toggle" id="switch-toggle-option-1"></div>
+                </div>
+                <label for="option-1" style="margin-left: 10px; cursor: pointer;">Remover após seleção</label>
+            </div>
+        </div>
         <script src="js/scripts.js"></script>
     </body>
 </html>
