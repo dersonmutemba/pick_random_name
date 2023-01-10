@@ -9,6 +9,7 @@ var selectbutton = document.getElementById("select-button");
 var selectcontainer = document.getElementById("random-name-selection-container");
 var inputcontainer = document.getElementById("text-input-container");
 var display = document.getElementById("display-name");
+var displayduration = 3;
 
 textboxname.focus();
 
@@ -89,8 +90,12 @@ function randomName() {
 /** Show the randomly selected name to the user */
 async function showRandomName() {
     hideElements();
+    if(names.length != 1)
+        await animateNameSelection();
     display.innerHTML = randomName();
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    showDurationIndicator();
+    await new Promise(resolve => setTimeout(resolve, displayduration*1000));
+    hideDurationIndicator();
     if(listEmpty()) {
         scrolltoinput();
     }
@@ -100,6 +105,24 @@ async function showRandomName() {
 /** Hide the elements of the display screen */
 function hideElements() {
     selectbutton.style.display = "none";
+}
+
+/** Make an effect for name reveal */
+async function animateNameSelection() {
+    let timeLimit = 1000;
+    let timeInterval = 50;
+    let timeNow = 0;
+    let namePosition = 0;
+    let sizeNow = 160;
+    let sizeLimit = 80;
+    let sizeDecrement = (sizeNow - sizeLimit)/(timeLimit/timeInterval);
+    while (timeNow < timeLimit) {
+        display.style.fontSize = sizeNow + "px";
+        display.innerHTML = names[namePosition++ % names.length];
+        await new Promise(resolve => setTimeout(resolve, timeInterval));
+        timeNow += timeInterval;
+        sizeNow -= sizeDecrement;
+    }
 }
 
 /** Restore the elements of the display screen */
@@ -199,4 +222,21 @@ async function controlGoToInputMessage() {
     showGoToInputMessage();
     await new Promise(resolve => setTimeout(resolve, 10000));
     hideGoToInputMessage();
+}
+
+/** Makes the duration indicator visible */
+function showDurationIndicator() {
+    var durationindicator = document.getElementById("display-duration");
+    durationindicator.style.opacity = "1";
+    var treading = document.getElementById("display-duration-treading");
+    treading.style.transition = "width " + displayduration + "s cubic-bezier(0, 0, 0, 0.8)";
+    treading.style.width = "0";
+    treading.style.width = "100%";
+}
+
+function hideDurationIndicator() {
+    var durationindicator = document.getElementById("display-duration");
+    durationindicator.style.opacity = "0";
+    var treading = document.getElementById("display-duration-treading");
+    treading.style.width = "0";
 }
