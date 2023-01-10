@@ -92,3 +92,25 @@ button:hover{
     float: left;
     transition: transform .15s ease-in;
 }
+
+#messenger{
+    position: fixed;
+    top: calc(100vh);
+    right: 20px;
+    font-weight: 400;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 4px #ffffff13,
+                -1px -1px 8px #ffffff13,
+                1px -1px 12px #ffffff33,
+                -1px 1px 16px #ffffff33;
+    transition: transform .125s ease-out;
+}
+
+.messenger-highlight{
+    padding: 2px 8px;
+}
+
+.messenger-rounder-border{
+    border: 1px #fff solid;
+    border-radius: 8px;
+}

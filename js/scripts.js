@@ -24,9 +24,14 @@ window.onscroll = function(event) {
 
 textboxname.addEventListener("keypress", function(event) {
     if(event.key === "Enter") {
-        names.push(textboxname.value);
-        textboxname.value = "";
-        document.body.style.overflow = "visible";
+        if(textboxname.value.trim() != "") {
+            names.push(textboxname.value);
+            textboxname.value = "";
+            document.body.style.overflow = "visible";
+            if(names.length == 2) {
+                controlGoToDisplayMessage();
+            }
+        }
     }
 });
 
@@ -51,14 +56,18 @@ function scrolltodisplay() {
     selectcontainer.scrollIntoView();
     selectbutton.focus();
     document.body.style.overflow = "hidden";
+    hideGoToDisplayMessage();
+    controlGoToInputMessage();
 }
 
 /** Scrolls to the div where insertion is made */
 async function scrolltoinput() {
     inputcontainer.scrollIntoView();
-    document.body.style.overflow = "visible";
+    if(names.length != 0)
+        document.body.style.overflow = "visible";
     await new Promise(resolve => setTimeout(resolve, 1000));
     textboxname.focus();
+    hideGoToInputMessage();
 }
 
 /** Returns a random integer between 0 and limit
@@ -143,4 +152,51 @@ function removeElementAt(index, array) {
         }
     }
     return values;
+}
+
+/** Show the message to the user to go to the display screen */
+function showGoToDisplayMessage() {
+    var messenger = document.getElementById("messenger");
+    messenger.innerHTML = "Clique em <span class=\"messenger-highlight messenger-rounder-border\">&DownArrow;</span> ou deslize o mouse para prosseguir";
+    messenger.style.transition = "transform .125s ease-out, opacity .1s none"
+    messenger.style.opacity =  "1";
+    messenger.style.transform = "translateY(-40px)";
+}
+
+/** Hide the message to the user to go to the display screen */
+function hideGoToDisplayMessage() {
+    var messenger = document.getElementById("messenger");
+    messenger.style.transition = "transform .125s ease-out, opacity 1s linear";
+    messenger.style.transform = "translateY(0)";
+}
+
+/** Controls the message to the user to go to the display screen */
+async function controlGoToDisplayMessage() {
+    showGoToDisplayMessage();
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    hideGoToDisplayMessage();
+}
+
+/** Show the message to the user to go to the input screen */
+function showGoToInputMessage() {
+    var messenger = document.getElementById("messenger");
+    messenger.innerHTML = "Clique em <span class=\"messenger-highlight messenger-rounder-border\">&UpArrow;</span> para inserir nomes novamente";
+    messenger.style.transition = "transform .125s ease-out, opacity .1s none"
+    messenger.style.opacity =  "1";
+    messenger.style.transform = "translateY(-40px)";
+}
+
+/** Hide the message to the user to go to the input screen */
+function hideGoToInputMessage() {
+    var messenger = document.getElementById("messenger");
+    messenger.style.transition = "transform .125s ease-out, opacity 1s linear";
+    messenger.style.transform = "translateY(0)";
+}
+
+/** Controls the message to the user to go to the input screen */
+async function controlGoToInputMessage() {
+    await new Promise(resolve => setTimeout(resolve, 4000));
+    showGoToInputMessage();
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    hideGoToInputMessage();
 }
