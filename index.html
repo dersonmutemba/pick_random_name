@@ -15,11 +15,101 @@
         </div>
         <div class="messenger-and-options">
             <div id="options">
-                <input id="option-1" type="checkbox" style="display: none;" onchange="checkRemove()">
-                <div class="switch" id="switch-option-1" onclick="toggleRemove()">
-                    <div class="switch-toggle" id="switch-toggle-option-1"></div>
+                <div class="options-container">
+                    <input id="option-1" type="checkbox" style="display: none;" onchange="checkRemove()">
+                    <div class="switch" id="switch-option-1" onclick="toggleRemove()">
+                        <div class="switch-toggle" id="switch-toggle-option-1"></div>
+                    </div>
+                    <label for="option-1" style="margin-left: 10px; cursor: pointer;">Remover após seleção</label>
                 </div>
-                <label for="option-1" style="margin-left: 10px; cursor: pointer;">Remover após seleção</label>
+                <div style="width: 100%;"></div>
+                <div class="options-container">
+                    <input id="option-2" type="checkbox" style="display: none;" onclick="switchThemeMode()">
+                    <label for="option-2" style="cursor: pointer;">
+                        <svg
+                           width="40"
+                           height="40"
+                           viewBox="0 0 26.458333 26.458333"
+                           version="1.1"
+                           id="svg-light-mode"
+                           xmlns="http://www.w3.org/2000/svg"
+                           xmlns:svg="http://www.w3.org/2000/svg">
+                          <defs
+                             id="defs2" />
+                          <g
+                             id="layer1"
+                             transform="matrix(0.13897804,0,0,0.13897804,-1.3635276,-7.4090723)"
+                             style="stroke-width:16.83;stroke-dasharray:none">
+                            <g
+                               id="g11245"
+                               transform="matrix(0.6595945,0,0,0.6595945,40.429641,35.913334)"
+                               style="stroke-width:25.5157;stroke-dasharray:none">
+                              <circle
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 id="path9274"
+                                 cx="99.77565"
+                                 cy="166.82489"
+                                 r="74.233078" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="M 101.65927,26.376459 V 77.480847"
+                                 id="path11154" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="M 101.883,263.90057 V 315.005"
+                                 id="path11154-8" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="M 240.43296,167.70369 H 189.32853"
+                                 id="path11154-8-8" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="M 6.4594943,167.89523 H -44.644914"
+                                 id="path11154-8-8-8" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="M 26.492072,105.53001 -9.6441777,69.393748"
+                                 id="path11154-8-8-5" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="M 180.85588,105.53001 216.99215,69.393748"
+                                 id="path11230" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="M 26.492072,230.78967 -9.6441777,266.92599"
+                                 id="path11232" />
+                              <path
+                                 style="fill:none;stroke-width:25.5157;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;paint-order:normal"
+                                 d="m 180.85588,230.78967 36.13627,36.13632"
+                                 id="path11234" />
+                            </g>
+                          </g>
+                        </svg>
+                        <svg
+                           width="40"
+                           height="40"
+                           viewBox="0 0 26.458333 26.458333"
+                           version="1.1"
+                           id="svg-dark-mode"
+                           xmlns="http://www.w3.org/2000/svg"
+                           xmlns:svg="http://www.w3.org/2000/svg">
+                          <defs
+                             id="defs2" />
+                          <g
+                             id="layer1">
+                            <g
+                               id="g5909"
+                               transform="matrix(0.13413021,0,0,0.13413021,-0.85576163,-6.6879266)"
+                               style="stroke-width:10.9655;stroke-dasharray:none">
+                              <path
+                                 id="path4167"
+                                 style="fill:none;fill-opacity:1;stroke-width:10.9655;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+                                 d="M 196.66725,186.72614 A 96.895099,96.895099 0 0 1 83.701743,169.83488 96.895099,96.895099 0 0 1 65.376161,57.129516 96.895099,96.895099 0 0 0 41.272432,74.902765 a 96.895099,96.895099 0 0 0 0.853487,137.028785 96.895099,96.895099 0 0 0 137.028791,-0.85534 96.895099,96.895099 0 0 0 17.5118,-24.35082 z" />
+                            </g>
+                          </g>
+                        </svg>
+                    </label>
+                </div>
             </div>
             <div id="messenger" class="messenger-rounder-border"></div>
         </div>

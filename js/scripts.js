@@ -142,10 +142,10 @@ function toggleRemove() {
     var toggle = document.getElementById("switch-option-1");
     var switchToggle = document.getElementById("switch-toggle-option-1");
     if(mustRemove) {
-        toggle.style.backgroundColor = "#929292";
+        toggle.style.backgroundColor = "var(--deactivated-color)";
         switchToggle.style.transform = "translateX(0)";
     } else {
-        toggle.style.backgroundColor = "transparent";
+        toggle.style.backgroundColor = "var(--activated-color)";
         switchToggle.style.transform = "translateX(15px)";
     }
     mustRemove = !mustRemove;
@@ -234,9 +234,28 @@ function showDurationIndicator() {
     treading.style.width = "100%";
 }
 
+/** Hides the duration indicator */
 function hideDurationIndicator() {
     var durationindicator = document.getElementById("display-duration");
     durationindicator.style.opacity = "0";
     var treading = document.getElementById("display-duration-treading");
     treading.style.width = "0";
+}
+
+function switchThemeMode() {
+    var darkmodecheckbox = document.getElementById("option-2");
+    var lightmode = document.getElementById("svg-light-mode");
+    var darkmode = document.getElementById("svg-dark-mode");
+    var root = document.querySelector(":root");
+    if(darkmodecheckbox.checked) {
+        lightmode.style.display = "block";
+        darkmode.style.display = "none";
+        root.style.setProperty("--background-color", "#000");
+        root.style.setProperty("--foreground-color", "#fff");
+    } else {
+        darkmode.style.display = "block";
+        lightmode.style.display = "none";
+        root.style.setProperty("--background-color", "#fff");
+        root.style.setProperty("--foreground-color", "#000");
+    }
 }

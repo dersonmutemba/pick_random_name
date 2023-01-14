@@ -1,9 +1,19 @@
+:root{
+    /*--background-color: #0088dd;*/
+    --background-color: #fff;
+    --foreground-color: #000;
+    --activated-color: #00bb00;
+    --deactivated-color: #929292;
+    --toggle-color: #fff;
+}
+
 html{
     scroll-behavior: smooth;
 }
 
 *{
-    color: #fff;
+    color: var(--foreground-color);
+    transition: color .4s ease-in-out;
 }
 
 body{
@@ -11,20 +21,22 @@ body{
     height: 100%;
     padding: 0;
     margin: 0;
-    background-color: #0088dd;
-    color: #fff;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
+    transition: color .4s ease-in-out;
+    transition: background-color .4s ease-in-out;
 }
 
 button{
     cursor: pointer;
-    background-color: #0066aa;
+    background-color: var(--background-color);
     border: none;
     font-size: 20px;
     border-width: 2.5px;
     padding: 10px;
-    border-color: #fff;
+    border-color: var(--foreground-color);
     border-style: solid;
     border-radius: 15px;
     width: max-content;
@@ -32,7 +44,7 @@ button{
 }
 
 button:hover{
-    background-color: #0044aa;
+    background-color: var(--background-color);
 }
 
 #name{
@@ -65,11 +77,26 @@ button:hover{
 }
 
 #options{
-    position: absolute;
-    top: calc(100vh + 20px);
-    left: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 20px;
+    width: calc(100% - 40px);
     display: inline-flex;
     align-items: center;
+}
+
+.options-container{
+    min-width: fit-content;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px;
+    transition: background-color .2s ease-in-out;
+}
+
+.options-container:hover{
+    background-color: #bbbbbb55;
 }
 
 .switch{
@@ -83,7 +110,7 @@ button:hover{
 }
 
 .switch-toggle{
-    background-color: #fff;
+    background-color: var(--toggle-color);
     width: 20px;
     height: 20px;
     margin: 2px;
@@ -111,7 +138,7 @@ button:hover{
 }
 
 .messenger-rounder-border{
-    border: 1px #fff solid;
+    border: 1px var(--foreground-color) solid;
     border-radius: 8px;
 }
 
@@ -128,14 +155,22 @@ button:hover{
 #display-duration-treading{
     width: 0;
     height: 2px;
-    background-color: #fff;
+    background-color: var(--foreground-color);
 }
 
 #display-duration-leading{
-    background-color: #fff;
+    background-color: var(--foreground-color);
     border-radius: 10px 10px 10px 0;
     width: 10px;
     box-shadow: -1px -1px 3px #ffffffa0;
     height: 7.5px;
-    background-color: #fff;
+}
+
+#svg-light-mode{
+    stroke: #fff;
+    display: none;
+}
+
+#svg-dark-mode{
+    stroke: #000;
 }
